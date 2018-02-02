@@ -19,18 +19,18 @@ export default new Router({
       component: Home
     },
     {
-      path: '/meetups',
+      path: '/events',
       name: 'Meetups',
       component: Meetups
     },
     {
-      path: '/meetup/new',
+      path: '/event/new',
       name: 'CreateMeetup',
       component: CreateMeetup,
       beforeEnter: AuthGuard
     },
     {
-      path: '/meetups/:id',
+      path: '/events/:id',
       name: 'Meetup',
       props: true,
       component: Meetup

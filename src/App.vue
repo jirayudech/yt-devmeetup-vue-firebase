@@ -70,8 +70,8 @@
         ]
         if (this.userIsAuthenticated) {
           menuItems = [
-            {icon: 'supervisor_account', title: 'View Events', link: '/meetups'},
-            {icon: 'room', title: 'Organize Events', link: '/meetup/new'},
+            {icon: 'supervisor_account', title: 'View Events', link: '/events'},
+            {icon: 'room', title: 'Organize Events', link: '/event/new'},
             {icon: 'person', title: 'Profile', link: '/profile'}
           ]
         }
