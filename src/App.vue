@@ -44,7 +44,7 @@
           flat
           @click="onLogout">
           <v-icon left dark>exit_to_app</v-icon>
-          Logout
+          ออกจากระบบ
 
         </v-btn>
       </v-toolbar-items>
@@ -65,20 +65,33 @@
     computed: {
       menuItems () {
         let menuItems = [
-          {icon: 'face', title: 'Sign up', link: '/signup'},
-          {icon: 'lock_open', title: 'Sign in', link: '/signin'}
+          {icon: 'face', title: 'สมัครสมาชิก', link: '/signup'},
+          {icon: 'lock_open', title: 'เข้าสู่ระบบ', link: '/signin'}
         ]
-        if (this.userIsAuthenticated) {
+        if (this.userIsAuthenticated && this.userIsAdmin) {
           menuItems = [
-            {icon: 'supervisor_account', title: 'View Events', link: '/events'},
-            {icon: 'room', title: 'Organize Events', link: '/event/new'},
-            {icon: 'person', title: 'Profile', link: '/profile'}
+            {icon: 'supervisor_account', title: 'ดูกิจกรรมทั้งหมด', link: '/meetups'},
+            {icon: 'room', title: 'สร้างกิจกรรมใหม่', link: '/meetup/new'},
+            {icon: 'person', title: 'ข้อมูลส่วนตัว', link: '/profile'}
+          ]
+        } else if (this.userIsAuthenticated && !this.userIsAdmin) {
+          menuItems = [
+            {icon: 'supervisor_account', title: 'ดูกิจกรรมทั้งหมด', link: '/meetups'},
+            {icon: 'person', title: 'ข้อมูลส่วนตัว', link: '/profile'}
           ]
         }
         return menuItems
       },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      userIsAdmin () {
+        let user = this.$store.getters.user
+        if (user.userType === 'admin') {
+          return true
+        } else {
+          return false
+        }
       }
     },
     methods: {
