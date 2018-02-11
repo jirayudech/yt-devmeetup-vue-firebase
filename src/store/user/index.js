@@ -123,9 +123,14 @@ export default {
         }
         const updatedUser = {
           id: getters.user.id,
-          age: dataPairs.age,
-          name: dataPairs.name,
-          surname: dataPairs.surname,
+          birthday: dataPairs.CDBIRTH,
+          name: dataPairs.CFNAME,
+          fullname: dataPairs.CFULLNAME_PERSON,
+          mobile: dataPairs.CMOBILE,
+          email: dataPairs.CMAIL,
+          kong: dataPairs.CKONG_NAME,
+          samnak: dataPairs.CSAMNAK_NAME,
+          urlimage: dataPairs.URLIMAGE,
           userType: dataPairs.user_type,
           registeredMeetups: registeredMeetups,
           fbKeys: swappedPairs
